@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Muhammad Azhar — AI Engineer</title>
+<meta name="description" content="Muhammad Azhar — AI Engineer in Karachi. Deep-learning models, RAG pipelines, and production-grade AI APIs across agriculture, medical imaging, and NLP." />
+<meta name="theme-color" content="#050714" />
+<meta property="og:title" content="Muhammad Azhar — AI Engineer" />
+<meta property="og:description" content="Deep-learning models, RAG pipelines, and production-grade AI APIs — shipped, not just trained." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://azharops.tech" />
+<link rel="canonical" href="https://azharops.tech" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2357bdda'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='17' font-weight='700' fill='%23050714' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="bg-math" aria-hidden="true">
+  <span class="eq eq-1">∇<i>L</i>(θ) = −∑ <i>y</i> log(<i>ŷ</i>)</span>
+  <span class="eq eq-2">σ(<i>z</i>) = 1 / (1 + <i>e</i><sup>−<i>z</i></sup>)</span>
+  <span class="eq eq-3">θ<sub>t+1</sub> = θ<sub>t</sub> − η ∇<i>L</i>(θ<sub>t</sub>)</span>
+  <span class="eq eq-4">Attention(<i>Q,K,V</i>) = softmax(<i>QK</i><sup>⊤</sup>/√<i>d<sub>k</sub></i>) <i>V</i></span>
+  <span class="eq eq-5"><i>H</i>(<i>p,q</i>) = −∑ <i>p</i><sub>i</sub> log <i>q</i><sub>i</sub></span>
+  <span class="eq eq-6"><i>p</i>(<i>y</i>∣<i>x</i>) = softmax(<i>Wx</i> + <i>b</i>)</span>
+  <span class="eq eq-7">ELBO = 𝔼<sub>q</sub>[log <i>p</i>(<i>x</i>∣<i>z</i>)] − KL(<i>q</i> ‖ <i>p</i>)</span>
+  <span class="eq eq-8">ReLU(<i>x</i>) = max(0, <i>x</i>)</span>
+  <span class="eq eq-9"><i>L</i> = ½ ‖<i>y</i> − <i>X</i>θ‖²</span>
+  <span class="eq eq-10"><i>ŷ</i> = arg max <i>P</i>(<i>y</i>∣<i>x</i>; θ)</span>
+  <span class="eq eq-11"><i>F</i><sub>1</sub> = 2·<i>PR</i> / (<i>P</i>+<i>R</i>)</span>
+  <span class="eq eq-12">cos(<i>u,v</i>) = <i>u</i>·<i>v</i> / (‖<i>u</i>‖‖<i>v</i>‖)</span>
+  <span class="eq eq-13"><i>D</i><sub>KL</sub>(<i>p</i>‖<i>q</i>) = ∑ <i>p</i>(<i>x</i>) log <i>p</i>(<i>x</i>)/<i>q</i>(<i>x</i>)</span>
+  <span class="eq eq-14"><i>z</i> = μ + σ ⊙ ε,  ε ∼ 𝒩(0,<i>I</i>)</span>
+</div>
+<div class="cursor-glow"></div>
+<div class="scroll-progress"></div>
+
+<!-- ================ NAV ================ -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark">M</span>
+      <span>Muhammad Azhar</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" data-target="about" href="#about">about</a>
+      <a class="nav-link" data-target="skills" href="#skills">skills</a>
+      <a class="nav-link" data-target="experience" href="#experience">experience</a>
+      <a class="nav-link" data-target="projects" href="#projects">projects</a>
+      <a class="nav-link" data-target="education" href="#education">education</a>
+      <a class="nav-link" data-target="contact" href="#contact">contact</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================ MOBILE MENU ================ -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <nav class="mobile-menu-inner">
+    <a class="m-link" data-target="about" href="#about"><span class="idx">01</span><span>about</span><span class="m-arrow">→</span></a>
+    <a class="m-link" data-target="skills" href="#skills"><span class="idx">02</span><span>skills</span><span class="m-arrow">→</span></a>
+    <a class="m-link" data-target="experience" href="#experience"><span class="idx">03</span><span>experience</span><span class="m-arrow">→</span></a>
+    <a class="m-link" data-target="projects" href="#projects"><span class="idx">04</span><span>projects</span><span class="m-arrow">→</span></a>
+    <a class="m-link" data-target="education" href="#education"><span class="idx">05</span><span>education</span><span class="m-arrow">→</span></a>
+    <a class="m-link" data-target="contact" href="#contact"><span class="idx">06</span><span>contact</span><span class="m-arrow">→</span></a>
+    <div class="m-channels">
+      <a href="mailto:azharthegeek@gmail.com">email</a>
+      <a href="https://linkedin.com/in/azharthegeek" target="_blank" rel="noopener">linkedin</a>
+      <a href="https://github.com/azharthegeek" target="_blank" rel="noopener">github</a>
+    </div>
+  </nav>
+</div>
+
+<!-- ================ HERO ================ -->
+<section id="about" class="hero" data-screen-label="01 Hero">
+  <a id="top"></a>
+  <canvas id="hero-bg-canvas" aria-hidden="true"></canvas>
+  <div class="hero-orb"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-status">
+          <span class="avatar">MA</span>
+          <span>Muhammad Azhar</span>
+          <span class="sep">/</span>
+          <span>Karachi, PK</span>
+          <span class="ring"></span>
+        </div>
+
+        <div class="hero-name mono">GEN-AI · RAG PIPELINES · MLOPS · CV &amp; NLP</div>
+
+        <h1 class="hero-headline">
+          <span class="line"><span>Building</span></span>
+          <span class="line"><span><em>intelligent</em> systems</span></span>
+          <span class="line"><span>that survive</span></span>
+          <span class="line"><span><em>production.</em></span></span>
+        </h1>
+
+        <div class="hero-subline">
+          <span class="arrow">▸</span>
+          <span data-typed>AI Engineer</span>
+          <span class="typed-cursor"></span>
+        </div>
+
+        <p class="hero-desc">
+          I design and ship deep-learning models, RAG pipelines, and production-grade AI APIs -
+          from satellite imagery for precision agriculture to medical-imaging diagnostics and
+          Roman-Urdu NLP. <span class="scramble" data-scramble="Currently shipping AI at scale.">Currently shipping AI at scale.</span>
+        </p>
+
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contact">
+            Let's build something
+            <span class="btn-arrow">↗</span>
+          </a>
+          <a class="btn btn-ghost" href="#projects">
+            See selected work
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="num" data-value="150+">0</div>
+            <div class="lbl">Models deployed</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num" data-value="4+">0</div>
+            <div class="lbl">Years building AI</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num" data-value="25+">0</div>
+            <div class="lbl">Certifications</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num" data-value="2">0</div>
+            <div class="lbl">Research papers</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-chip chip-1"><span class="dot"></span>gpt-4o · streaming</div>
+        <div class="hero-chip chip-2"><span class="dot violet"></span>LangGraph agent</div>
+        <div class="hero-chip chip-3"><span class="dot mint"></span>pinecone://prod</div>
+        <div class="hero-chip chip-4"><span class="dot amber"></span>fastapi:8000 ✓</div>
+
+        <div class="console">
+          <div class="console-head">
+            <div class="console-dots"><span></span><span></span><span></span></div>
+            <div class="console-title">azhar@ml-prod · <b>~/agents/main</b></div>
+            <div class="console-tag"><span class="pip"></span>LIVE</div>
+          </div>
+
+          <div class="console-metrics">
+            <div class="metric-cell">
+              <div class="lbl">TOKENS / SEC</div>
+              <div class="val"><span id="m-tps">1284</span> <span class="arrow">↑</span></div>
+              <svg class="spark" id="spark-1" viewBox="0 0 50 18" preserveAspectRatio="none"></svg>
+            </div>
+            <div class="metric-cell">
+              <div class="lbl">LATENCY P95</div>
+              <div class="val"><span id="m-lat">142</span><span class="unit">ms</span> <span class="arrow down">↓</span></div>
+              <svg class="spark" id="spark-2" viewBox="0 0 50 18" preserveAspectRatio="none"></svg>
+            </div>
+            <div class="metric-cell">
+              <div class="lbl">ACTIVE MODELS</div>
+              <div class="val"><span id="m-mod">07</span></div>
+              <svg class="spark" id="spark-3" viewBox="0 0 50 18" preserveAspectRatio="none"></svg>
+            </div>
+            <div class="metric-cell">
+              <div class="lbl">REQUESTS / MIN</div>
+              <div class="val"><span id="m-req">3.4</span><span class="unit">k</span> <span class="arrow">↑</span></div>
+              <svg class="spark" id="spark-4" viewBox="0 0 50 18" preserveAspectRatio="none"></svg>
+            </div>
+          </div>
+
+          <div class="console-net">
+            <span class="net-label tl"><span style="color:var(--cyan)">●</span> model.training</span>
+            <span class="net-label tr" id="loss-readout">loss · 0.0042</span>
+            <canvas id="hero-canvas" aria-hidden="true"></canvas>
+            <span class="net-label bl">ARCH · <span class="arch-num">3</span> - <span class="arch-num">5</span> - <span class="arch-num">6</span> - <span class="arch-num">5</span> - <span class="arch-num">3</span></span>
+            <span class="net-label br" id="epoch-readout">epoch 142/∞</span>
+          </div>
+
+          <div class="console-log" id="terminal-body"></div>
+
+          <div class="console-foot">
+            <span class="seg ok"><span class="lbl">●</span><span class="v">healthy</span></span>
+            <span class="seg"><span class="lbl">region</span><span class="v">us-east-1</span></span>
+            <span class="seg"><span class="lbl">build</span><span class="v">v3.2.1</span></span>
+            <span class="grow"></span>
+            <span class="seg"><span class="lbl">uptime</span><span class="v uptime" id="m-uptime">142h 38m</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <span class="rail"></span>
+  </div>
+</section>
+
+<!-- ================ MARQUEE ================ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/python.png" alt=""/>Python</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/tensorflow.png" alt=""/>TensorFlow</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/openai.png" alt=""/>OpenAI</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/anthropic.png" alt=""/>Anthropic</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/langchain.png" alt=""/>LangChain</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/langgraph.png" alt=""/>LangGraph</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/pinecone.png" alt=""/>Pinecone</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/chromadb.png" alt=""/>ChromaDB</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/fastapi.png" alt=""/>FastAPI</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/docker.png" alt=""/>Docker</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/kubernetes.png" alt=""/>Kubernetes</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/aws.png" alt=""/>AWS</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/azure.png" alt=""/>Azure</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/opencv.png" alt=""/>OpenCV</span>
+    <!-- duplicate set for seamless loop -->
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/python.png" alt=""/>Python</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/tensorflow.png" alt=""/>TensorFlow</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/openai.png" alt=""/>OpenAI</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/anthropic.png" alt=""/>Anthropic</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/langchain.png" alt=""/>LangChain</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/langgraph.png" alt=""/>LangGraph</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/pinecone.png" alt=""/>Pinecone</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/chromadb.png" alt=""/>ChromaDB</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/fastapi.png" alt=""/>FastAPI</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/docker.png" alt=""/>Docker</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/kubernetes.png" alt=""/>Kubernetes</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/aws.png" alt=""/>AWS</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/azure.png" alt=""/>Azure</span>
+    <span class="marquee-item"><img loading="lazy" decoding="async" src="assets/skills/opencv.png" alt=""/>OpenCV</span>
+  </div>
+</div>
+
+<!-- ================ SKILLS ================ -->
+<section id="skills" class="section-pad" data-screen-label="02 Skills">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-tag"><span class="square"></span>02 / Toolkit</div>
+        <h2>The stack behind <span class="gradient">production AI</span></h2>
+      </div>
+      <div class="section-meta">~ 50+ tools across the ML lifecycle</div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-stack">
+        <div class="skill-card reveal">
+          <div class="skill-card-head">
+            <h3><span class="dot-icon"></span>ML &amp; Deep Learning</h3>
+            <span class="num">/ 06</span>
+          </div>
+          <div class="skill-list">
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/python.png" alt=""/>Python</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/tensorflow.png" alt=""/>TensorFlow</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/keras.png" alt=""/>Keras</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/scikitlearn.png" alt=""/>Scikit-learn</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/opencv.png" alt=""/>OpenCV</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/matplotlib.png" alt=""/>Matplotlib</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal reveal-delay-1">
+          <div class="skill-card-head violet">
+            <h3><span class="dot-icon"></span>Generative AI &amp; LLMs</h3>
+            <span class="num">/ 08</span>
+          </div>
+          <div class="skill-list">
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/openai.png" alt=""/>OpenAI</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/anthropic.png" alt=""/>Anthropic</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/deepseek.png" alt=""/>DeepSeek</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/langchain.png" alt=""/>LangChain</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/langgraph.png" alt=""/>LangGraph</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/llamaindex.png" alt=""/>LlamaIndex</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/flowise.png" alt=""/>Flowise</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/langfuse.png" alt=""/>Langfuse</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal reveal-delay-2">
+          <div class="skill-card-head mint">
+            <h3><span class="dot-icon"></span>Vector &amp; Data</h3>
+            <span class="num">/ 04</span>
+          </div>
+          <div class="skill-list">
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/pinecone.png" alt=""/>Pinecone</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/chromadb.png" alt=""/>ChromaDB</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/milvus.png" alt=""/>Milvus</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/airbyte.png" alt=""/>Airbyte</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal reveal-delay-3">
+          <div class="skill-card-head amber">
+            <h3><span class="dot-icon"></span>Infra &amp; MLOps</h3>
+            <span class="num">/ 07</span>
+          </div>
+          <div class="skill-list">
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/fastapi.png" alt=""/>FastAPI</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/docker.png" alt=""/>Docker</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/kubernetes.png" alt=""/>Kubernetes</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/aws.png" alt=""/>AWS</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/azure.png" alt=""/>Azure</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/firebase.png" alt=""/>Firebase</span>
+            <span class="skill-chip"><img loading="lazy" decoding="async" src="assets/skills/linux.png" alt=""/>Linux</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="orbit-card reveal reveal-delay-2">
+        <div class="label-top">
+          <span>// CORE_LOOP</span>
+          <span style="color:var(--cyan)">● live</span>
+        </div>
+        <div class="title-mid">Daily orbit</div>
+        <div class="orbit-stage">
+          <div class="orbit-ring r3"></div>
+          <div class="orbit-ring r2"></div>
+          <div class="orbit-ring r1"></div>
+
+          <div class="orbit-core">AI</div>
+
+          <!-- inner ring -->
+          <div class="orbit-node" data-ring="0.55" data-angle="0"><img loading="lazy" decoding="async" src="assets/skills/python.png" alt=""/></div>
+          <div class="orbit-node" data-ring="0.55" data-angle="120"><img loading="lazy" decoding="async" src="assets/skills/openai.png" alt=""/></div>
+          <div class="orbit-node" data-ring="0.55" data-angle="240"><img loading="lazy" decoding="async" src="assets/skills/langchain.png" alt=""/></div>
+
+          <!-- middle ring -->
+          <div class="orbit-node r2" data-ring="0.78" data-angle="30"><img loading="lazy" decoding="async" src="assets/skills/fastapi.png" alt=""/></div>
+          <div class="orbit-node r2" data-ring="0.78" data-angle="100"><img loading="lazy" decoding="async" src="assets/skills/docker.png" alt=""/></div>
+          <div class="orbit-node r2" data-ring="0.78" data-angle="170"><img loading="lazy" decoding="async" src="assets/skills/pinecone.png" alt=""/></div>
+          <div class="orbit-node r2" data-ring="0.78" data-angle="240"><img loading="lazy" decoding="async" src="assets/skills/anthropic.png" alt=""/></div>
+          <div class="orbit-node r2" data-ring="0.78" data-angle="310"><img loading="lazy" decoding="async" src="assets/skills/tensorflow.png" alt=""/></div>
+
+          <!-- outer ring -->
+          <div class="orbit-node r3" data-ring="1.0" data-angle="15"><img loading="lazy" decoding="async" src="assets/skills/aws.png" alt=""/></div>
+          <div class="orbit-node r3" data-ring="1.0" data-angle="75"><img loading="lazy" decoding="async" src="assets/skills/chromadb.png" alt=""/></div>
+          <div class="orbit-node r3" data-ring="1.0" data-angle="135"><img loading="lazy" decoding="async" src="assets/skills/azure.png" alt=""/></div>
+          <div class="orbit-node r3" data-ring="1.0" data-angle="195"><img loading="lazy" decoding="async" src="assets/skills/llamaindex.png" alt=""/></div>
+          <div class="orbit-node r3" data-ring="1.0" data-angle="255"><img loading="lazy" decoding="async" src="assets/skills/kubernetes.png" alt=""/></div>
+          <div class="orbit-node r3" data-ring="1.0" data-angle="315"><img loading="lazy" decoding="async" src="assets/skills/langgraph.png" alt=""/></div>
+        </div>
+        <div class="label-top" style="margin-top:auto;">
+          <span>tools_in_motion = 14</span>
+          <span>updated daily</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ EXPERIENCE ================ -->
+<section id="experience" class="section-pad" data-screen-label="03 Experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-tag"><span class="square"></span>03 / Track record</div>
+        <h2>From research labs to <span class="gradient">production APIs</span></h2>
+      </div>
+      <div class="section-meta">2020 - present · 4 roles</div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item current reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-row">
+          <div class="tl-period">
+            JUL 2024 - PRESENT
+            <div><span class="badge">● ACTIVE</span></div>
+          </div>
+          <div class="tl-body">
+            <h3>AI Engineer</h3>
+            <div class="company">Al Nafi</div>
+            <p>Developing and deploying AI models and APIs that boosted Alnafi's workflow by 10×. Building generative-AI systems, RAG pipelines, and production-grade APIs that serve thousands of users.</p>
+            <div class="tl-tech">
+              <span>Python</span><span>LangChain</span><span>FastAPI</span><span>OpenAI</span><span>Docker</span><span>Pinecone</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item current reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-row">
+          <div class="tl-period">
+            NOV 2020 - PRESENT
+            <div><span class="badge">● ACTIVE</span></div>
+          </div>
+          <div class="tl-body">
+            <h3>Founder &amp; AI Lead</h3>
+            <div class="company">TechShoor</div>
+            <p>Architected and shipped AI models converted into production APIs across agriculture, healthcare and NLP. Designed Python curriculum for PEPC covering fundamentals through OOP for hundreds of students.</p>
+            <div class="tl-tech">
+              <span>Python</span><span>TensorFlow</span><span>FastAPI</span><span>Docker</span><span>Azure</span><span>Firebase</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-row">
+          <div class="tl-period">SEP 2023 - JAN 2024</div>
+          <div class="tl-body">
+            <h3>Junior Lecturer</h3>
+            <div class="company">Institute of Business Management (IoBM)</div>
+            <p>Taught OOP, Data Structures &amp; Algorithms, Computer Networks and Programming Fundamentals. Authored lab manuals and supervised final-year projects introducing students to cutting-edge AI tooling.</p>
+            <div class="tl-tech">
+              <span>Python</span><span>Java</span><span>C++</span><span>DSA</span><span>Networking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-row">
+          <div class="tl-period">FEB 2021 - JUN 2023</div>
+          <div class="tl-body">
+            <h3>Data Analyst</h3>
+            <div class="company">Unique Traders</div>
+            <p>Built scalable scrapers to harvest customer data from Google Maps, designed and implemented relational databases, and shipped automated marketing pipelines for client outreach.</p>
+            <div class="tl-tech">
+              <span>Python</span><span>Selenium</span><span>PostgreSQL</span><span>Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ PROJECTS ================ -->
+<section id="projects" class="section-pad" data-screen-label="04 Projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-tag"><span class="square"></span>04 / Selected work</div>
+        <h2>Three systems, <span class="gradient">three industries</span></h2>
+      </div>
+      <div class="section-meta">CV · Medical AI · NLP</div>
+    </div>
+
+    <div class="projects-stack">
+      <article class="project-card tint-mint reveal">
+        <div class="project-img-wrap">
+          <span class="project-cat">Computer Vision</span>
+          <span class="project-num">01</span>
+          <img loading="lazy" decoding="async" src="assets/projects/project-1.png" alt="TechShoor Agri" />
+        </div>
+        <div class="project-body">
+          <h3>TechShoor Agri - precision agriculture from orbit</h3>
+          <div class="project-metrics">
+            <div class="project-metric"><span class="v gradient">Multi-spectral</span><span class="l">Imagery</span></div>
+            <div class="project-metric"><span class="v gradient">Field-level</span><span class="l">Granularity</span></div>
+            <div class="project-metric"><span class="v gradient">Real-time</span><span class="l">Inference</span></div>
+          </div>
+          <p>An AI-powered platform that turns satellite imagery into actionable yield insights for farmers across South Asia.</p>
+          <ul class="project-feature-list">
+            <li>Deep-learning pipeline on satellite imagery for crop-health monitoring</li>
+            <li>Disease detection and land-condition diagnostics with severity mapping</li>
+            <li>Per-field recommendations to lift yield and cut input waste</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span><span>TensorFlow</span><span>FastAPI</span><span>Docker</span><span>Azure</span><span>Rasterio</span>
+          </div>
+          <a class="project-link" href="https://agri.techshoor.com/" target="_blank" rel="noopener">visit agri.techshoor.com →</a>
+        </div>
+      </article>
+
+      <article class="project-card tint-cyan reveal">
+        <div class="project-img-wrap">
+          <span class="project-cat">Medical AI</span>
+          <span class="project-num">02</span>
+          <img loading="lazy" decoding="async" src="assets/projects/project-3.png" alt="Fracture Detection" />
+        </div>
+        <div class="project-body">
+          <h3>MediScan - fracture detection on musculoskeletal X-rays</h3>
+          <div class="project-metrics">
+            <div class="project-metric"><span class="v gradient">7-class</span><span class="l">Anatomical regions</span></div>
+            <div class="project-metric"><span class="v gradient">&lt; 1s</span><span class="l">Inference</span></div>
+            <div class="project-metric"><span class="v gradient">Azure VM</span><span class="l">Production stack</span></div>
+          </div>
+          <p>A clinical-grade DL pipeline trained on the MURA dataset to flag abnormalities across seven anatomical regions.</p>
+          <ul class="project-feature-list">
+            <li>7-category classification with TensorFlow + PyTorch ensembles</li>
+            <li>Outperforms baseline models on validation accuracy &amp; F1</li>
+            <li>Deployed to an Azure VM behind nginx - sub-second inference</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span><span>TensorFlow</span><span>PyTorch</span><span>FastAPI</span><span>Docker</span><span>Azure</span>
+          </div>
+          <a class="project-link" href="https://mediscan.techshoor.com/" target="_blank" rel="noopener">visit mediscan.techshoor.com →</a>
+        </div>
+      </article>
+
+      <article class="project-card tint-violet reveal">
+        <div class="project-img-wrap">
+          <span class="project-cat">Natural Language</span>
+          <span class="project-num">03</span>
+          <img loading="lazy" decoding="async" src="assets/projects/project-2.png" alt="Semantic Analysis" />
+        </div>
+        <div class="project-body">
+          <h3>Roman-Urdu Sentiment - NLP for an under-served language</h3>
+          <div class="project-metrics">
+            <div class="project-metric"><span class="v gradient">Custom</span><span class="l">Corpus</span></div>
+            <div class="project-metric"><span class="v gradient">Roman-Urdu</span><span class="l">Regional language tooling</span></div>
+            <div class="project-metric"><span class="v gradient">Django</span><span class="l">Web app deployed</span></div>
+          </div>
+          <p>Custom NLP pipeline that classifies sentiment in Roman Urdu product reviews, closing a real gap in regional language tooling.</p>
+          <ul class="project-feature-list">
+            <li>End-to-end pipeline: tokenize → normalize → classify on custom corpora</li>
+            <li>Trained with NLTK + Scikit-learn on hand-curated review datasets</li>
+            <li>Web app deployed on Django, exposing scores to non-technical users</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span><span>NLTK</span><span>Scikit-learn</span><span>Django</span>
+          </div>
+          <a class="project-link" href="https://github.com/azharthegeek/sentiment-analysis-roman-urdu" target="_blank" rel="noopener">view on github →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================ EDUCATION ================ -->
+<section id="education" class="section-pad" data-screen-label="05 Education">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-tag"><span class="square"></span>05 / Education</div>
+        <h2>Formal training, <span class="gradient">always learning</span></h2>
+      </div>
+      <div class="section-meta">2019 - 2026</div>
+    </div>
+
+    <div class="edu-grid">
+      <div class="edu-card current reveal">
+        <div class="edu-short">MS(AI)</div>
+        <h3>Master of Science in Artificial Intelligence</h3>
+        <div class="inst">FAST NUCES, Karachi</div>
+        <div class="meta">
+          <span>AUG 2024 - AUG 2026</span>
+          <span>Specialization · Generative AI &amp; ML systems</span>
+        </div>
+      </div>
+
+      <div class="edu-card reveal reveal-delay-1">
+        <div class="edu-short">BSCS</div>
+        <h3>Bachelor of Science in Computer Science</h3>
+        <div class="inst">Sindh Madressatul Islam University, Karachi</div>
+        <div class="meta">
+          <span>AUG 2019 - AUG 2023 · CGPA 3.17</span>
+          <span class="highlight">★ Best Final-Year Project Award</span>
+        </div>
+      </div>
+
+      <div class="edu-card reveal reveal-delay-2">
+        <div class="edu-short">AI Dev</div>
+        <h3>Diploma in Artificial Intelligence</h3>
+        <div class="inst">PIAIC - Presidential Initiative for AI &amp; Computing</div>
+        <div class="meta">
+          <span>APR 2019 - AUG 2021</span>
+          <span>Percentile 90.23</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ PUBLICATIONS ================ -->
+<section id="publications" class="section-pad" style="padding-top:0;" data-screen-label="06 Publications">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-tag"><span class="square"></span>06 / Research</div>
+        <h2>Published &amp; <span class="gradient">presented</span></h2>
+      </div>
+      <div class="section-meta">2 papers · peer-reviewed</div>
+    </div>
+
+    <div class="pub-list">
+      <a class="pub-item reveal" href="https://ssurj.edu.pk/index.php/ssurjet" target="_blank" rel="noopener">
+        <div class="type">Journal</div>
+        <div>
+          <h3>Study on Reinforcement Learning and Deep Reinforcement Learning Schemes: A Review</h3>
+          <div class="venue">Sir Syed University Research Journal of Engineering &amp; Technology (SSURJET)</div>
+          <div class="authors">M. Azhar, M. Ahmed, K. Kumar, M. K. Niazi, M. Waqas · published</div>
+        </div>
+        <div class="read">read paper <span class="arrow">→</span></div>
+      </a>
+
+      <a class="pub-item reveal reveal-delay-1" href="https://www.smiu.edu.pk" target="_blank" rel="noopener">
+        <div class="type">Conference</div>
+        <div>
+          <h3>Usage of Deep Learning Models in Agricultural Satellite Imagery - A Review</h3>
+          <div class="venue">Global Research Congress 2023 · SMIU Karachi</div>
+          <div class="authors">M. Azhar, M. A. Khuhro, M. K. Niazi · presented</div>
+        </div>
+        <div class="read">view venue <span class="arrow">→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================ CONTACT ================ -->
+<section id="contact" class="section-pad" style="padding-top:40px;" data-screen-label="07 Contact">
+  <div class="container">
+    <div class="contact-card reveal">
+      <div class="availability">
+        <span class="ring"></span>
+        AVAILABLE FOR NEW PROJECTS · Q3 2026
+      </div>
+      <h2>Have an AI problem worth <em>solving?</em></h2>
+      <p>From a single proof-of-concept to a production RAG stack, I'd love to hear about it.</p>
+      <div class="contact-meta">
+        <div class="item"><span class="v mint">&lt; 24h</span><span class="l">Response time</span></div>
+        <div class="item"><span class="v">Karachi, PK</span><span class="l">Based in</span></div>
+        <div class="item"><span class="v">Remote · Hybrid</span><span class="l">Open to</span></div>
+        <div class="item"><span class="v">Freelance</span><span class="l">Engagements</span></div>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:azharthegeek@gmail.com">
+          azharthegeek@gmail.com
+          <span class="btn-arrow">↗</span>
+        </a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/azharthegeek" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/azharthegeek" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="contact-channels">
+        <a href="https://twitter.com/azharthegeek" target="_blank" rel="noopener"><span class="label">x ·</span>@azharthegeek</a>
+        <a href="https://azharthegeek.medium.com" target="_blank" rel="noopener"><span class="label">medium ·</span>@azharthegeek</a>
+        <a href="https://youtube.com/@TechShoor" target="_blank" rel="noopener"><span class="label">youtube ·</span>@TechShoor</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ FOOTER ================ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="signature">
+      <span class="ping"></span>
+      <span>© 2026 MUHAMMAD AZHAR · CRAFTED IN KARACHI</span>
+    </div>
+    <div>BUILT WITH HTML · CSS · &lt;3 - NO FRAMEWORKS</div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
